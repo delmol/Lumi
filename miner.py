@@ -1,5 +1,5 @@
-import time
-
+import threading
+screen_lock = threading.Semaphore()
 
 class Miner():
 
@@ -9,7 +9,6 @@ class Miner():
         self.chain = chain
 
     def mine(self):
-        print()
         b = self.chain.createBlock(str(self.chain.mempool))
         self.chain.mempool.clear()
         while (self.mining == True):

@@ -25,14 +25,14 @@ class Database():
                                        address TEXT)
                 ''')
         self.db.commit()
-        cursor.execute('''
-                    CREATE TABLE forgers(id INTEGER PRIMARY KEY, address TEXT,
-                                       uptime INT, timestamp TIMESTAMP, nonce INT)
-                ''')
-        self.db.commit()
 
-    def addBlock(self):
-        print()
+    def addBlock(self, hash, prevHash, timestamp, nonce):
+        self.db = sqlite3.connect('data/db')
+        cursor = self.db.cursor()
+        cursor.execute('''
+                    INSERT INTO blocks(hash, prevHash, timestamp, nonce) VALUES(?,?,?,?)
+                ''', (hash, prevHash, timestamp, nonce))
+        self.db.commit()
 
     def addUTXO(self):
         print()

@@ -1,5 +1,10 @@
 import block
 import hashlib
+import threading
+import database
+import json
+
+screen_lock = threading.Semaphore()
 
 
 class Blockchain():
@@ -9,7 +14,8 @@ class Blockchain():
     chain = {}
     mempool = {}
 
-    def __init__(self):
+    def __init__(self, db):
+        self.db = db
         self.createGenesisBlock()
 
     def getBlock(self, id):
@@ -22,11 +28,16 @@ class Blockchain():
         if (self.validateBlock(newBlock) == True):
             self.chain[len(self.chain)] = newBlock
             self.height = len(self.chain)
+            self.db.addBlock(newBlock["hash"], newBlock["prevHash"], newBlock["timestamp"], newBlock["nonce"])
             '''Run Forge Lottery'''
             '''If we won, begin mining'''
+            screen_lock.acquire()
             print("Added block: " + newBlock["hash"])
+            screen_lock.release()
         else:
+            screen_lock.acquire()
             print("Block Rejected")
+            screen_lock.release()
 
     def createBlock(self, data):
         if len(self.chain) == 0:
@@ -42,7 +53,9 @@ class Blockchain():
         genBlock = self.createBlock(data)
         genBlock = genBlock.serialize()
         self.addBlock(genBlock)
+        screen_lock.acquire()
         print("Initialised Genesis Block: " + genBlock["hash"])
+        screen_lock.release()
 
     def calculateChainHash(self):
         hash = hashlib.sha256(str(self.chain).encode('utf-8')).hexdigest()

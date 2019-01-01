@@ -1,3 +1,4 @@
+import threading
 from threading import Thread
 import cherrypy
 import server
@@ -5,9 +6,12 @@ import blockchain
 import miner
 import database
 
+screen_lock = threading.Semaphore()
 
-chain = blockchain.Blockchain()
+db = database.Database()
+chain = blockchain.Blockchain(db)
 minerD = miner.Miner(chain)
+
 
 sflag = False
 
@@ -31,17 +35,23 @@ def threadMiner():
     thread.setDaemon(True)
     thread.start()
 
+def startCLI():
+    print()
+
+def threadCLI():
+    print()
+
 
 loadConfig()
 threadServer()
 threadMiner()
 
-db = database.Database()
-
 a = ""
 
 while(sflag == False):
+    screen_lock.acquire()
     a = input("> ")
+    screen_lock.release()
     if(a == "c"):
         sflag == True
         minerD.mining = False
