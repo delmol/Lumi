@@ -63,3 +63,8 @@ class ChainManager():
     def calculateChainHash(self):
         hash = hashlib.sha256(str(self.chain).encode('utf-8')).hexdigest()
         return hash
+
+
+
+    def verifyGenesis(self):
+        print()

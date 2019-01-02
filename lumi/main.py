@@ -1,12 +1,12 @@
-import threading
 from threading import Thread
 import cherrypy
 import server
 import chainManager
 import miner
 
-chainManager = chainManager.ChainManager()
-minerD = miner.Miner(chainManager)
+
+chainManager = chainManager.ChainManager()  # Create instance of Chain Manager
+minerD = miner.Miner(chainManager)  # Create instance of Miner Daemon
 
 
 def startServer():
@@ -27,7 +27,7 @@ def threadMiner():
     thread.start()
 
 
-threadServer()
+threadServer()  # Start server in separate thread
 threadMiner()
 
 while(1):

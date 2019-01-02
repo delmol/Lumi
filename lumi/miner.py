@@ -3,6 +3,7 @@ screen_lock = threading.Semaphore()
 
 class Miner():
 
+
     mining = False
 
     def __init__(self, chain):
