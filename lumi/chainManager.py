@@ -15,6 +15,7 @@ class ChainManager():
     def __init__(self):
         self.db = database.Database()
         self.initChain()
+        self.verifyGenesis()
 
     def initChain(self):
         blocks = self.db.getNumBlocks()
@@ -67,4 +68,14 @@ class ChainManager():
 
 
     def verifyGenesis(self):
-        print()
+        genesis = self.db.getBlock(1)
+        if(genesis[1] == "hash"):
+            #do hash check
+        if(genesis[2] == "prevHash"]):
+            #do prevhash check
+        if(genesis[3] == "timestamp"):\
+            #do timestamp check
+        if(genesis[4] == "nonce"):
+            #do nonce check
+        print(genesis)
+        return True
