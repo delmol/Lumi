@@ -1,9 +1,13 @@
 import cherrypy
 import json
-import transaction
+from models import transaction
 
 
 class Server(object):
+
+    # SERVER MANAGER
+    # CREATES A LISTENING HTTP SERVER ON THE SPECIFIED PORT (SEE CONFIG)
+    # HANDLES INCOMING DATA/REQUESTS AND FORWARDS THEM TO THE CHAIN MANAGER
 
     def __init__(self, chain):
         self.chain = chain

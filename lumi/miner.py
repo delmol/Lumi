@@ -9,8 +9,11 @@ class Miner():
         self.chain = chain
 
     def mine(self):
+        print("MINING")
+        print(self.mining)
         b = self.chain.createBlock(str(self.chain.mempool))
         self.chain.mempool.clear()
+        print("MINING")
         while (self.mining == True):
             if(b.hash.startswith("00000") == True):
                 b = b.serialize()

@@ -1,22 +1,31 @@
-import block
+from models import block
 import hashlib
 import threading
-import database
+from lib import database
 import json
 
-screen_lock = threading.Semaphore()
 
+class ChainManager():
 
-class Blockchain():
-
-    difficulty = 0
-    height = 0
+    difficulty = 0  # current blockchain difficulty
+    height = 0  # current blockchain height
     chain = {}
     mempool = {}
 
-    def __init__(self, db):
-        self.db = db
-        self.createGenesisBlock()
+    def __init__(self):
+        self.db = database.Database()
+        self.initChain()
+
+    def initChain(self):
+        blocks = self.db.getNumBlocks()
+        self.height = blocks
+        if(blocks > 0):
+            '''load chain'''
+            print("Chain exists")
+        else:
+            self.createGenesisBlock()
+        print("Blockchain initialised.")
+        print("Block height: " + str(self.height))
 
     def getBlock(self, id):
         if len(self.chain) > 0:
@@ -25,19 +34,15 @@ class Blockchain():
             return None
 
     def addBlock(self, newBlock):
-        if (self.validateBlock(newBlock) == True):
+        if (1 == 1):
             self.chain[len(self.chain)] = newBlock
             self.height = len(self.chain)
             self.db.addBlock(newBlock["hash"], newBlock["prevHash"], newBlock["timestamp"], newBlock["nonce"])
             '''Run Forge Lottery'''
             '''If we won, begin mining'''
-            screen_lock.acquire()
             print("Added block: " + newBlock["hash"])
-            screen_lock.release()
         else:
-            screen_lock.acquire()
             print("Block Rejected")
-            screen_lock.release()
 
     def createBlock(self, data):
         if len(self.chain) == 0:
@@ -53,25 +58,8 @@ class Blockchain():
         genBlock = self.createBlock(data)
         genBlock = genBlock.serialize()
         self.addBlock(genBlock)
-        screen_lock.acquire()
         print("Initialised Genesis Block: " + genBlock["hash"])
-        screen_lock.release()
 
     def calculateChainHash(self):
         hash = hashlib.sha256(str(self.chain).encode('utf-8')).hexdigest()
         return hash
-
-    def validateBlock(self, testBlock):
-        return True
-
-    def validateChain(self):
-        print()
-
-    def validateTransactions(self):
-        print()
-
-    def validateTransaction(self):
-        print()
-
-    def validateForgeChain(self):
-        print()
