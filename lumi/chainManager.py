@@ -51,7 +51,7 @@ class ChainManager():
             print("Block Rejected")
 
     def createBlock(self, data):
-        if len(self.chain) == 0:
+        if self.height == 0:
             prevHash = "09F663DE96BE771F50CAB5DED00256FFE63773E2EAA9A604092951CC3D7C6621"
         else:
             prevHash = self.chain[len(self.chain) - 1]["hash"]
@@ -78,11 +78,6 @@ class ChainManager():
     def broadcastBlock(self, block):
         r = requests.post('http://127.0.0.1:8555/recblock', json=block)
         print(r.status_code)
-        '''req = urllib.request.urlopen('http://127.0.0.1:8555/recblock')
-        req.add_header('Content-Type', 'application/json')
-        response = urllib.urlopen(req, json.dumps(data))
-        response = str(response)
-        print(response)'''
 
 
 

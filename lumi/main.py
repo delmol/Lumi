@@ -3,9 +3,14 @@ import cherrypy
 import server
 import chainManager
 import miner
+import sys
 
 
-cherrypy.config.update({'server.socket_port': 8555})
+if(sys.argv[1] == 1):
+    cherrypy.config.update({'server.socket_port': 8556})
+    node = 1
+else:
+    cherrypy.config.update({'server.socket_port': 8555})
 
 chainManager = chainManager.ChainManager()  # Create instance of Chain Manager
 minerD = miner.Miner(chainManager)  # Create instance of Miner Daemon
