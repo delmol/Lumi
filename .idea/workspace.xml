@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="38778e7e-c8a7-4b0d-a503-2eab78e70eff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/lumi/chainManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/chainManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lumi/data/db" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/data/db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lumi/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lumi/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lumi/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+            <state relative-caret-position="187">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lumi/chainManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+            <state relative-caret-position="612">
+              <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -105,9 +105,9 @@
         <option value="$PROJECT_DIR$/lumi/miner.py" />
         <option value="$PROJECT_DIR$/lumi/lib/client.py" />
         <option value="$PROJECT_DIR$/lumi/server.py" />
-        <option value="$PROJECT_DIR$/lumi/main.py" />
         <option value="$PROJECT_DIR$/lumi/lib/database.py" />
         <option value="$PROJECT_DIR$/lumi/chainManager.py" />
+        <option value="$PROJECT_DIR$/lumi/main.py" />
       </list>
     </option>
   </component>
@@ -296,16 +296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lumi/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lumi/lib/database.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -318,10 +308,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lumi/chainManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+        <state relative-caret-position="612">
+          <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lumi/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

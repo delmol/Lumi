@@ -91,6 +91,7 @@ class ChainManager():
     def peerGetChain(self):
         r = requests.get('http://127.0.0.1:8555/height')
         height = r.json()
+        print(height)
 
 
 
