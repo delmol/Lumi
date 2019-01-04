@@ -36,6 +36,12 @@ class Server(object):
         return body
 
     @cherrypy.expose
+    def height(self):
+        height = self.chain.height
+        height = "{ height: " + str(height) + " }"
+        return height
+
+    @cherrypy.expose
     def transaction(self):
         tx = transaction.Transaction(1)
         tx = tx.serialize()

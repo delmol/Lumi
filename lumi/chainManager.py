@@ -6,10 +6,6 @@ import json
 import urllib
 import requests
 
-data = {
-        'ids': [12, 3, 4, 5, 6]
-}
-
 
 class ChainManager():
 
@@ -18,7 +14,13 @@ class ChainManager():
     chain = {}
     mempool = {}
 
-    def __init__(self):
+    i = 0
+
+    def __init__(self, i):
+
+        if i == 1:
+            self.i = i
+
         self.db = database.Database()
         self.initChain()
         self.verifyGenesis()
@@ -31,12 +33,16 @@ class ChainManager():
             print("Chain exists")
         else:
             self.createGenesisBlock()
+            if self.i == 1:
+                self.peerGetChain()
+
         print("Blockchain initialised.")
         print("Block height: " + str(self.height))
 
     def getBlock(self, id):
-        if len(self.chain) > 0:
-            return self.chain[id]
+        if self.height > 0:
+            block = self.db.getBlock(id)
+            return block
         else:
             return None
 
@@ -54,7 +60,8 @@ class ChainManager():
         if self.height == 0:
             prevHash = "09F663DE96BE771F50CAB5DED00256FFE63773E2EAA9A604092951CC3D7C6621"
         else:
-            prevHash = self.chain[len(self.chain) - 1]["hash"]
+            prevBlock = self.db.getBlock(self.height)
+            prevHash = prevBlock[2]
 
         newBlock = block.Block(data, prevHash, self.calculateChainHash())
         return newBlock
@@ -78,6 +85,13 @@ class ChainManager():
     def broadcastBlock(self, block):
         r = requests.post('http://127.0.0.1:8555/recblock', json=block)
         print(r.status_code)
+
+    # TODO: remove later
+
+    def peerGetChain(self):
+        r = requests.get('http://127.0.0.1:8555/height')
+        height = r.json()
+
 
 
 
