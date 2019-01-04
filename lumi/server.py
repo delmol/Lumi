@@ -28,6 +28,14 @@ class Server(object):
         return block
 
     @cherrypy.expose
+    def recblock(self):
+        cl = cherrypy.request.headers['Content-Length']
+        rawbody = cherrypy.request.body.read(int(cl))
+        body = json.loads(rawbody)
+        print("Received block:" + body["hash"])
+        return body
+
+    @cherrypy.expose
     def transaction(self):
         tx = transaction.Transaction(1)
         tx = tx.serialize()

@@ -5,6 +5,8 @@ import chainManager
 import miner
 
 
+cherrypy.config.update({'server.socket_port': 8555})
+
 chainManager = chainManager.ChainManager()  # Create instance of Chain Manager
 minerD = miner.Miner(chainManager)  # Create instance of Miner Daemon
 
@@ -28,6 +30,7 @@ def threadMiner():
 
 
 threadServer()  # Start server in separate thread
+# chainManager.broadcastBlock()
 threadMiner()
 
 while(1):

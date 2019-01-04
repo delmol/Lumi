@@ -19,6 +19,7 @@ class Miner():
             if(b.hash.startswith("00000") == True):
                 b = b.serialize()
                 self.chain.addBlock(b)
+                self.chain.broadcastBlock(b)
                 b = self.chain.createBlock(str(self.chain.mempool))
                 self.chain.mempool.clear()
             else:

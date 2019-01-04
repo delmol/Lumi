@@ -3,6 +3,12 @@ import hashlib
 import threading
 from lib import database
 import json
+import urllib
+import requests
+
+data = {
+        'ids': [12, 3, 4, 5, 6]
+}
 
 
 class ChainManager():
@@ -21,7 +27,7 @@ class ChainManager():
         blocks = self.db.getNumBlocks()
         self.height = blocks
         if(blocks > 0):
-            '''load chain'''
+            '''load chain state & verify'''
             print("Chain exists")
         else:
             self.createGenesisBlock()
@@ -36,8 +42,7 @@ class ChainManager():
 
     def addBlock(self, newBlock):
         if (1 == 1):
-            self.chain[len(self.chain)] = newBlock
-            self.height = len(self.chain)
+            self.height = self.height + 1
             self.db.addBlock(newBlock["hash"], newBlock["prevHash"], newBlock["timestamp"], newBlock["nonce"])
             '''Run Forge Lottery'''
             '''If we won, begin mining'''
@@ -66,16 +71,34 @@ class ChainManager():
         return hash
 
 
+    def receiveBlock(self, block):
+        # check block is valid
+        self.addBlock(block)
+
+    def broadcastBlock(self, block):
+        r = requests.post('http://127.0.0.1:8555/recblock', json=block)
+        print(r.status_code)
+        '''req = urllib.request.urlopen('http://127.0.0.1:8555/recblock')
+        req.add_header('Content-Type', 'application/json')
+        response = urllib.urlopen(req, json.dumps(data))
+        response = str(response)
+        print(response)'''
+
+
 
     def verifyGenesis(self):
         genesis = self.db.getBlock(1)
         if(genesis[1] == "hash"):
-            #do hash check
-        if(genesis[2] == "prevHash"]):
-            #do prevhash check
-        if(genesis[3] == "timestamp"):\
-            #do timestamp check
+            print()
+
+        if(genesis[2] == "prevHash"):
+            print()
+
+        if(genesis[3] == "timestamp"):
+            print()
+
         if(genesis[4] == "nonce"):
-            #do nonce check
+            print()
+
         print(genesis)
         return True
