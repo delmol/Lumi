@@ -83,7 +83,11 @@ class ChainManager():
         self.addBlock(block)
 
     def broadcastBlock(self, block):
-        r = requests.post('http://127.0.0.1:8555/recblock', json=block)
+        if self.i == 1:
+            r = requests.post('http://127.0.0.1:8555/recblock', json=block)
+        else:
+            r = requests.post('http://127.0.0.1:8556/recblock', json=block)
+
         print(r.status_code)
 
     # TODO: remove later
