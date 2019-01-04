@@ -87,12 +87,15 @@ class ChainManager():
         self.blockFlag = False
 
     def broadcastBlock(self, block):
-        if self.i == 1:
-            r = requests.post('http://127.0.0.1:8555/recblock', json=block)
-        else:
-            r = requests.post('http://127.0.0.1:8556/recblock', json=block)
+        try:
+            if self.i == 1:
+                r = requests.post('http://127.0.0.1:8555/recblock', json=block)
+            else:
+                r = requests.post('http://127.0.0.1:8556/recblock', json=block)
 
-        print(r.status_code)
+            print(r.status_code)
+        except:
+            print("FAILED to broadcast block to peer!")
 
     # TODO: remove later
 

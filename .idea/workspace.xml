@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="38778e7e-c8a7-4b0d-a503-2eab78e70eff" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/lumi/chainManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/chainManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lumi/data/db" beforeDir="false" afterPath="$PROJECT_DIR$/lumi/data/db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lumi/chainManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="106" column="56" selection-start-line="106" selection-start-column="56" selection-end-line="106" selection-end-column="56" />
+            <state relative-caret-position="412">
+              <caret line="97" column="53" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -316,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lumi/chainManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="106" column="56" selection-start-line="106" selection-start-column="56" selection-end-line="106" selection-end-column="56" />
+        <state relative-caret-position="412">
+          <caret line="97" column="53" selection-start-line="97" selection-start-column="53" selection-end-line="97" selection-end-column="53" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
