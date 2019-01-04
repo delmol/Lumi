@@ -16,13 +16,14 @@ class Miner():
         self.chain.mempool.clear()
         print("MINING")
         while (self.mining == True):
-            if(b.hash.startswith("00000") == True):
-                b = b.serialize()
-                self.chain.addBlock(b)
-                self.chain.broadcastBlock(b)
-                b = self.chain.createBlock(str(self.chain.mempool))
-                self.chain.mempool.clear()
-            else:
-                b.nonce = b.nonce + 1
-                b.calculateHash()
+            while(self.chain.blockFlag == False):
+                if(b.hash.startswith("00000") == True):
+                    b = b.serialize()
+                    self.chain.addBlock(b)
+                    self.chain.broadcastBlock(b)
+                    b = self.chain.createBlock(str(self.chain.mempool))
+                    self.chain.mempool.clear()
+                else:
+                    b.nonce = b.nonce + 1
+                    b.calculateHash()
 

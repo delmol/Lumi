@@ -14,6 +14,8 @@ class ChainManager():
     chain = {}
     mempool = {}
 
+    blockFlag = False
+
     i = 0
 
     def __init__(self, i):
@@ -80,7 +82,9 @@ class ChainManager():
 
     def receiveBlock(self, block):
         # check block is valid
+        self.blockFlag = True
         self.addBlock(block)
+        self.blockFlag = False
 
     def broadcastBlock(self, block):
         if self.i == 1:
