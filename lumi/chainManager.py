@@ -97,9 +97,22 @@ class ChainManager():
     # TODO: remove later
 
     def peerGetChain(self):
-        r = requests.get('http://127.0.0.1:8555/height')
-        height = r.json()
-        print(height)
+        try:
+            r = requests.get('http://127.0.0.1:8555/height')
+            height = r.json()
+            for x in range(1, height):
+                block = self.peerGetBlock(x)
+                self.addBlock(block)
+        except:
+            print("FAILED to get chain height from peer!")
+
+    def peerGetBlock(self, id):
+        try:
+            r = requests.get('http://127.0.0.1:8555/block/' + id)
+            block = r.json()
+            self.addBlock(block)
+        except:
+            print("FAILED to get block " + id + " from peer!")
 
 
 
